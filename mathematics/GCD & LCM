@@ -3,3 +3,7 @@ GCD (Greatest Common Divisor) or HCF (Highest Common Factor) of two numbers is t
 int function gcd(int a,int b){
   return b==0 ? a : gcd(b,a%b);
 }
+int function lcm(int a,int b){
+  int g = gcd(a,b);
+  return (a*b)/g;
+}
