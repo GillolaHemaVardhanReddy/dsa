@@ -1,0 +1,5 @@
+GCD (Greatest Common Divisor) or HCF (Highest Common Factor) of two numbers is the largest number that divides both of them. 
+
+int function gcd(int a,int b){
+  return b==0 ? a : gcd(b,a%b);
+}
