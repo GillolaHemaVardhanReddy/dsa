@@ -1,0 +1,12 @@
+simple iterative solution for counting digits : better soln - 
+  <code>
+  function countDigits(int n){
+    if(n==0) return 1 ;
+    int count = 0 ;
+    while ( n != 0 ) {
+      n/=10;
+      count++;
+    }
+    return count ;
+  }
+  </code>
