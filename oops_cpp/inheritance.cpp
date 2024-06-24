@@ -2,19 +2,10 @@
 using namespace std;
 
 class AbstractEmployee {
-    /*
-     Abstraction: Hiding the complex logic or code and showing simple or logical
-     methods outside. This enables complex functionality without exposing it to
-     users and provides a user-friendly environment.
-     To implement this, we use abstract classes in C++.
-     In abstract classes, we can have functions declared without a body and
-     attributes without values.
-     Any method can be declared as abstract using the keyword "virtual" followed by "= 0".
-    */
    virtual void AskForPromotion() = 0; // Pure virtual function
 };
 
-class Employee : AbstractEmployee {
+class Employee : public AbstractEmployee { // Changed inheritance to public
    private:
     string Name;
     string Company;
@@ -75,26 +66,47 @@ class Employee : AbstractEmployee {
     }
 };
 
-class Developer: Employee {
+class Developer : public Employee { // Changed inheritance to public
     /*
-     inheritance : there are 2 classes parent/base class and child or derived class
-     any class which inherits other class is child class
-     and class which is getting inherited by other classes is called parent
+     Inheritance: There are 2 classes, a parent/base class and a child/derived class.
+     Any class which inherits from another class is called a child class.
+     The class which is inherited by other classes is called a parent class.
 
-     child class can also have its own methods that are not present in parent
-     and also use parent class methods and attributes
+     A child class can have its own methods that are not present in the parent
+     and can also use the parent class methods and attributes.
 
-     usually inheritance is done using extends but in cpp we just use ":"
-     semicolon to do so
+     In C++, inheritance is done using the ":" symbol.
 
-     here Developer is child class and Employee is parent
-     Developer class have all properties/attributes of Employee 
+     Here Developer is the child class and Employee is the parent class.
+     The Developer class has all properties/attributes of the Employee class.
+
+     If the parent class has a user-defined constructor, the child class also needs
+     a user-defined constructor because it loses the default constructor.
     */
     public: 
         string FavProgramLang;
+        /*
+            When declaring a user-defined constructor in the child class, we also need
+            to call the parent class constructor since it has no default constructor.
+            We do that using a colon ":" after the child constructor, as
+            shown below.
+
+            We can use all public methods and variables of the parent class,
+            but to access private members, we use getters and setters.
+        */
+        Developer(string name, string company, int age, string favprogramlang)
+        :Employee(name, company, age) {
+            FavProgramLang = favprogramlang;
+        }
+        void fixBug() {
+            cout << getName() << " fixes bugs using " << FavProgramLang << endl;
+        }
 };
+
 int main() {
-    Developer d;
+    Developer d("hema vardhan", "brochill", 28, "cpp");
+
+    cout<<d.getName();
     
     return 0;
 }
