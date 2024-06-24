@@ -5,18 +5,13 @@ class AbstractEmployee {
    virtual void AskForPromotion() = 0; // Pure virtual function
 };
 
-class Employee : AbstractEmployee { // Changed inheritance to public
-   protected: 
-   /*
-        whenever we use protected and keep methods or variables in it
-        every child class that inherits these can also access them directly
-        but no instance can use them directly
+class Employee : public AbstractEmployee { // Changed inheritance to public
+   private :
+    int Age;
 
-        in case of private not even child can use them
-   */
+   protected: 
     string Name;
     string Company;
-    int Age;
 
    public:
     // Setter for Name
@@ -73,12 +68,14 @@ class Employee : AbstractEmployee { // Changed inheritance to public
     }
 };
 
-class Developer : Employee { // Changed inheritance to public
+class Developer : public Employee { // Changed inheritance to public
     
     public: 
         string FavProgramLang;
         /*
-            
+            any inheritance will be private by default so any variables other than protected
+            will become private inorder to tell child
+            to use methods/variables of public to be public only we use public keyword before inheritance
         */
         Developer(string name, string company, int age, string favprogramlang)
         :Employee(name, company, age) {
@@ -93,7 +90,7 @@ class Developer : Employee { // Changed inheritance to public
 int main() {
     Developer d("hema vardhan", "brochill", 28, "cpp");
 
-    d.fixBug();
+    d.AskForPromotion();
     
     return 0;
 }
