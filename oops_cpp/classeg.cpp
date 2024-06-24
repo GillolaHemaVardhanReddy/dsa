@@ -21,6 +21,12 @@ class Employee {
         1. Won't have a return value specified or used.
         2. Its name is the same as the class name.
         3. Constructor may be private or public.
+
+        once we create a class with our own constructor it looses 
+        default constructor and
+        any class that inherits this user defined constructor class will also
+        loose their own default constructor which means
+        even children of theses classes need a user defined constructors
     */
    
    public:
