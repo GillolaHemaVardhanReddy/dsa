@@ -1,0 +1,2 @@
+paradigm of oops is to use programming for explaining real life examples
+it combines both methods and variables 
